@@ -1,8 +1,22 @@
+import React, { useState } from 'react';
+import ImageUrl from './components/ImageUrl';
+import ImageUpload from './components/ImageUpload';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [isUploadFromDevice, setIsUploadFromDevice] = useState(false);
+
+  const handleIsUploadFromDevice = () => {
+    setIsUploadFromDevice(!isUploadFromDevice)
+  }
+
   return (
     <div>
+          <h1>Face Recognition App</h1>
+          <h2>Try it out!</h2>
+          {isUploadFromDevice ? <ImageUpload/> : <ImageUrl/>}
+          {isUploadFromDevice ? <p className='url-upload-toggle' onClick={handleIsUploadFromDevice}>Or enter url ?</p> : <p className='url-upload-toggle' onClick={handleIsUploadFromDevice}>Or upload from device ?</p>}
     </div>
   );
 }
