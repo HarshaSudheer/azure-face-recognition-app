@@ -57,6 +57,20 @@ const ImageUrl = () => {
                             <div key={item.faceId} style={faceRectangleStyle(item)}>{data.indexOf(item) + 1}</div>
                         )
                     })}
+                    {data.length > 0 ?
+                        <div>
+                            {data.map(item => {
+                                return (
+                                    <div key={item.faceId}>
+                                        <p>{data.indexOf(item) + 1}</p>
+                                        <p>Gender: {item.faceAttributes.gender}</p>
+                                        <p>Age: {item.faceAttributes.age}</p>
+                                        <p>Glasses: {item.faceAttributes.glasses}</p>
+                                    </div>
+                                )
+                            })}
+                        </div> : <p>No face detected</p>
+                    }
                     <button type="button" onClick={handleBack}>BACK</button>
                 </div>
             }
