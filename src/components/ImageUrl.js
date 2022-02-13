@@ -4,6 +4,21 @@ const ImageUrl = () => {
     const [data, setData] = useState([])
     const [image, setImage] = useState("");
     const [outputImage, setOutputImage] = useState(false);
+    const faceRectangleStyle = (item) => {
+        return ({
+            position: 'absolute',
+            top: `${item.faceRectangle.top}px`,
+            left: `${item.faceRectangle.left}px`,
+            width: `${item.faceRectangle.width}px`,
+            height: `${item.faceRectangle.height}px`,
+            border: '2px solid #BA0B93',
+            textAlign: 'center',
+            color: 'white',
+            fontSize: '20px',
+            fontWeight: 'bold'
+        });
+    }
+
     useEffect(() => {
         console.log(data);
     }, [data])
@@ -35,8 +50,13 @@ const ImageUrl = () => {
                     <button type="button" onClick={handleSubmit}>SUBMIT</button>
                 </div>
                 :
-                <div>
+                <div style={{ position: 'relative' }}>
                     <img src={image} alt="output" /><br />
+                    {data && data.map(item => {
+                        return (
+                            <div key={item.faceId} style={faceRectangleStyle(item)}>{data.indexOf(item) + 1}</div>
+                        )
+                    })}
                     <button type="button" onClick={handleBack}>BACK</button>
                 </div>
             }
