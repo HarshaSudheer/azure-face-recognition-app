@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { faceApiForUrl } from "../services/FaceApi";
 const ImageUrl = () => {
     const [data, setData] = useState([])
     const [image, setImage] = useState("");
     const [outputImage, setOutputImage] = useState(false);
+    useEffect(() => {
+        console.log(data);
+    }, [data])
     const handleSubmit = async () => {
         try {
             const response = await faceApiForUrl.post(
