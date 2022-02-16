@@ -65,7 +65,7 @@ const ImageUrl = () => {
               <img src={image} alt="output from azure" />
               {data && data.map(item => {
                 return (
-                  <div key={item.faceId} style={faceRectangleStyle(item)}>{data.indexOf(item) + 1}</div>
+                  <div key={item.faceId} style={faceRectangleStyle(item)}></div>
                 )
               })
               }
@@ -78,7 +78,6 @@ const ImageUrl = () => {
                   return (
 
                     <div key={item.faceId} className="element">
-                      <p style={{ textAlign: 'center' }}>{data.indexOf(item) + 1}</p>
                       <p>Gender: {item.faceAttributes.gender}</p>
                       <p>Age: {item.faceAttributes.age}</p>
                       <p>Glasses: {item.faceAttributes.glasses}</p>
